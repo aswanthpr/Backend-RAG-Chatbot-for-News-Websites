@@ -3,9 +3,7 @@ import { Redis } from "ioredis";
 export let redis: Redis | null = null;
 export const redisClient = (): Redis => {
   if (!redis) {
-  redis =  new Redis({
-    port: Number(process.env["REDIS_PORT"]),
-    host: process.env["REDIS_HOST"],
+  redis =  new Redis(process.env["REDIS_URL"]!,{
     db: 0,
     lazyConnect: false,
     connectTimeout: 10000,
