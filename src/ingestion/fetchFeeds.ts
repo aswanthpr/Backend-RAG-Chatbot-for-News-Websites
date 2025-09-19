@@ -7,11 +7,7 @@ export async function fetchRSSFeed(url: string):Promise<IArticle[]> {
 
     const body = await res.data;
 
-    console.log("RSS fetched, length:", body.length);
-
     const feed = parseFeed(body);
-
-  console.log("Parsed feed items:", feed.items.length);
 
     return feed.items.map((item)=>({
         title: item.title ||"",

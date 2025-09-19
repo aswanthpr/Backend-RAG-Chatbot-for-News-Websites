@@ -11,11 +11,6 @@ export async function chatSocket(socket: Socket) {
     }
     socket.join(sessionId);
 
-    // Send existing history to this client
-    // const key = `session:${sessionId}:history`;
-    //   const raw = await redis?.lrange(key, 0, -1);
-    //   const history = raw.map((r) => JSON.parse(r));
-    //   socket.emit("chat_history", history);
 
     //incomming message;
     socket.on("chat:send:message", async (msg: string) => {

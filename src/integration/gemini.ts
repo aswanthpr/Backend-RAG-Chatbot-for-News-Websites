@@ -11,7 +11,6 @@ export async function callGemini(text:string): Promise<string| undefined>{
           model: "gemini-2.5-flash",
           contents: `${PROMPT}\n${text}`,
         });
-        console.log(response.text);
         return response?.text;
     } catch (error) {
         console.log(error instanceof ApiError ? error : String(error))

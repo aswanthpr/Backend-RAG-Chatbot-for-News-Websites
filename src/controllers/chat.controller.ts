@@ -21,7 +21,7 @@ export const getChatHistory = async (
     const rawHistory = await redis?.get(key);
 
     const history = rawHistory ? JSON.parse(rawHistory) : [];
-    console.log(history,'this is history')
+
 
     res.status(HttpStatus.OK).json({
       success: true,
@@ -50,7 +50,6 @@ export const createSession = async (
       "EX",
       HISTORY_TTL
     );
-console.log('session created')
     res.status(HttpStatus?.OK).json({
       success: true,
       message: HttpResponse?.SESSION_CREATED,
