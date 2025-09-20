@@ -72,6 +72,7 @@ export async function pushToSessionHistory(
     const key = `session:${sessionId}`;
 
     const raw = await redis?.get(key);
+
     let history: IChatMessage[] = [];
 
     if (raw) {
@@ -86,7 +87,7 @@ export async function pushToSessionHistory(
     }
     // trim history to last MAX_HISTORY_ITEMS
     // refresh TTL
-
+    // await redis?.expire(key, HISTORY_TTL)
 
   } catch (err: unknown) {
     console.log(err instanceof Error ? err : String(err));

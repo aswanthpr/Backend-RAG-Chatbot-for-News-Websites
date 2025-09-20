@@ -1,5 +1,5 @@
 import { getEmbedding } from "../integration/index";
-import { getQdrant ,initQdrant} from "../configs/index";
+import { getQdrant } from "../configs/index";
 import { chunkText, fetchRSSFeed } from "./index";
 import pLimit from "p-limit";
 import { uuidGen } from "../utils/index";
@@ -7,8 +7,7 @@ import { uuidGen } from "../utils/index";
 // Main Ingestion
 const limit  = pLimit(3);
 export async function runIngestion(): Promise<void> {
-    await initQdrant()
-  const qdrant = await getQdrant();
+  const qdrant = getQdrant();
 
   const articles = await fetchRSSFeed(process.env["RSS_FEED_URL"]!);
     if (!articles || articles.length === 0) {

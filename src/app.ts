@@ -5,11 +5,13 @@ import chatRoute from "./routes/chat.routes"
 import cors from "cors";
 import morgan from "morgan";
 import "dotenv/config";
+import "./utils/crone.job.util";
 
  const app: Application = express();
 
 redisClient();
 qdrantClient();
+
 
 app.use(morgan("dev"));
 app.use(cors(corsOptions));
